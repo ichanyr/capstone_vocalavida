@@ -9,7 +9,7 @@ class OnboardingView extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/Background.png'),
+            image: AssetImage('assets/images/Background.png'),
             fit: BoxFit.cover,
           ),
         ),

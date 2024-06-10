@@ -1,8 +1,11 @@
 import 'package:get/get.dart';
+
 import 'package:capstone_vocalavida/app/modules/home/bindings/home_binding.dart';
 import 'package:capstone_vocalavida/app/modules/home/views/home_view.dart';
 import 'package:capstone_vocalavida/app/modules/latihan/bindings/latihan_binding.dart';
 import 'package:capstone_vocalavida/app/modules/latihan/views/latihan_view.dart';
+import 'package:capstone_vocalavida/app/modules/latihan_detail/bindings/latihan_detail_binding.dart';
+import 'package:capstone_vocalavida/app/modules/latihan_detail/views/latihan_detail_view.dart';
 import 'package:capstone_vocalavida/app/modules/login/controllers/login_controller.dart';
 import 'package:capstone_vocalavida/app/modules/login/views/login_view.dart';
 import 'package:capstone_vocalavida/app/modules/main/views/main_view.dart';
@@ -13,10 +16,12 @@ import 'package:capstone_vocalavida/app/modules/profile/bindings/profile_binding
 import 'package:capstone_vocalavida/app/modules/profile/views/profile_view.dart';
 import 'package:capstone_vocalavida/app/modules/register/bindings/register_binding.dart';
 import 'package:capstone_vocalavida/app/modules/register/views/register_view.dart';
+
 import '../modules/main/controllers/main_controller.dart';
 import '../modules/onBoarding/views/on_boarding_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
+
 part 'app_routes.dart';
 
 class AppPages {
@@ -73,6 +78,11 @@ class AppPages {
       name: _Paths.ON_BOARDING,
       page: () => OnboardingView(),
       binding: OnBoardingBinding(),
+    ),
+    GetPage(
+      name: _Paths.LATIHAN_DETAIL,
+      page: () => LatihanDetailView(),
+      binding: LatihanDetailBinding(),
     ),
   ];
 }

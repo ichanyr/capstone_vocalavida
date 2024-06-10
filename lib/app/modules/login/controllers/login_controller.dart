@@ -18,29 +18,46 @@ class LoginController extends GetxController {
     Get.offAllNamed(Routes.LOGIN);
   }
 
-  void login(String email, String password) async {
+  void login() async {
+    String email = emailController.text.trim();
+    String password = passwordController.text.trim();
+
+    if (email.isEmpty || password.isEmpty) {
+      Get.snackbar('Error', 'Email dan password tidak boleh kosong.');
+      return;
+    }
+
     try {
       UserCredential userCredential = await auth.signInWithEmailAndPassword(
           email: email, password: password);
-      if (userCredential.user!.emailVerified) {
-        Get.snackbar('Success', 'User logged in successfully');
-        Get.offAllNamed(Routes.MAIN);
-      } else {
-        Get.snackbar('Error', 'Please verify your email');
+      if (userCredential.user != null) {
+        if (userCredential.user!.emailVerified) {
+          Get.snackbar('Sukses', 'Pengguna Berhasil Masik');
+          Get.offAllNamed(Routes.MAIN);
+        } else {
+          Get.snackbar('Error', 'Mohon Untuk Memverifikasi Email Anda');
+        }
       }
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('wrong email');
-        Get.snackbar('Error', 'No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('wrong password');
-        Get.snackbar('Error', 'Wrong password provided for that user.');
-      } else if (e.code == 'too-many-requests') {
-        print('too-many-requests');
-        Get.snackbar('Error', 'Too many requests. Try again later.');
+      switch (e.code) {
+        case 'user-not-found':
+          Get.snackbar('Error', 'Tidak Pengguna Dengan Email Tersebut.');
+          break;
+        case 'wrong-password':
+          Get.snackbar(
+              'Error', 'Kata sandi salah diberikan untuk pengguna itu.');
+          break;
+        case 'too-many-requests':
+          Get.snackbar('Error', 'Terlalu banyak permintaan. Coba lagi nanti.');
+          break;
+        default:
+          Get.snackbar('Error', 'Gagal masuk. Silakan coba lagi.');
+          break;
       }
       print(e.code);
     } catch (e) {
+      Get.snackbar(
+          'Error', 'Terjadi kesalahan yang tidak terduga. Silakan coba lagi.');
       print(e);
     }
   }

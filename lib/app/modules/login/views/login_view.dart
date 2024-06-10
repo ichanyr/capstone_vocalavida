@@ -1,8 +1,8 @@
 import 'package:capstone_vocalavida/app/modules/login/views/components/custom_form.dart';
+import 'package:capstone_vocalavida/app/routes/app_pages.dart';
 import 'package:capstone_vocalavida/app/style/colors.dart';
 import 'package:capstone_vocalavida/app/style/text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:capstone_vocalavida/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import '../controllers/login_controller.dart';
 
@@ -68,9 +68,7 @@ class LoginView extends GetView<LoginController> {
                 ),
                 child: Text('Masuk',
                     style: semibold.copyWith(fontSize: 20, color: white)),
-                onPressed: () => controller.login(
-                    controller.emailController.text,
-                    controller.passwordController.text),
+                onPressed: () => controller.login(),
               ),
             ),
             SizedBox(height: 33),

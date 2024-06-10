@@ -14,6 +14,7 @@ abstract class Routes {
   static const SPLASH = _Paths.SPLASH;
   static const ON_BORADING = _Paths.ON_BORADING;
   static const ON_BOARDING = _Paths.ON_BOARDING;
+  static const LATIHAN_DETAIL = _Paths.LATIHAN_DETAIL;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const SPLASH = '/splash';
   static const ON_BORADING = '/on-borading';
   static const ON_BOARDING = '/on-boarding';
+  static const LATIHAN_DETAIL = '/latihan-detail';
 }

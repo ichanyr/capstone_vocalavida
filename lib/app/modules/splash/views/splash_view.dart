@@ -12,7 +12,7 @@ class SplashView extends GetView<SplashController> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/Background.png'),
+            image: AssetImage('assets/images/Background.png'),
             fit: BoxFit.cover,
           ),
         ),
