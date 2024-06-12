@@ -16,7 +16,7 @@ class MainView extends GetView<MainController> {
       body: Obx(() {
         switch (controller.selectedIndex.value) {
           case 0:
-            return MateriView();
+            return HomeView();
           case 1:
             return LatihanView();
           default:

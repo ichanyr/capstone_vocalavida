@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: "Application",
               initialRoute: AppPages.INITIAL,
-              // initialRoute: Routes.PROFILE,
+              // initialRoute: Routes.HOME,
               // snapshot.data != null && snapshot.data!.emailVerified == true
               //     ? Routes.HOME
               //     : Routes.LOGIN,

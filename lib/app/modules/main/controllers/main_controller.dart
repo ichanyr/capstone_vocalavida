@@ -11,7 +11,7 @@ class MainController extends GetxController {
   void onInit() {
     Get.put(ProfileController());
     Get.put(LatihanController());
-    Get.put(MateriController());
+    Get.put(HomeController());
     super.onInit();
   }
 

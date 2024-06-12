@@ -12,7 +12,7 @@ class ProfileView extends GetView<ProfileController> {
       backgroundColor: offWhite,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
               Padding(
