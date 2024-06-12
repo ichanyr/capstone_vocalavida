@@ -249,7 +249,7 @@ class LatihanDetailView extends GetView<LatihanDetailController> {
                                 SizedBox(height: 20),
                                 ElevatedButton(
                                   onPressed: () {
-                                    Get.to(Routes.MAIN);
+                                    Get.offAllNamed(Routes.MAIN);
                                   },
                                   child: Text(
                                     "Selesai",

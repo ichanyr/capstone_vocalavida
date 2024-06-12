@@ -1,6 +1,5 @@
 import 'package:capstone_vocalavida/app/style/text_style.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 import '../../../style/colors.dart';
@@ -32,16 +31,20 @@ class HomeView extends GetView<HomeController> {
                         'Selamat Datang',
                         style: semibold.copyWith(fontSize: 32, color: blueWood),
                       ),
-                      Text(
-                        'Hardline Scott',
-                        style: semibold.copyWith(fontSize: 20, color: mistBlue),
-                      ),
+                      Obx(() => Text(
+                            controller.userName.value,
+                            style: semibold.copyWith(
+                                fontSize: 20, color: mistBlue),
+                          )),
                     ],
                   ),
-                  CircleAvatar(
-                    radius: 35,
-                    backgroundImage: AssetImage('images/avatar.png'),
-                  ),
+                  Obx(() => CircleAvatar(
+                        radius: 35,
+                        backgroundImage: controller.photoURL.value.isNotEmpty
+                            ? NetworkImage(controller.photoURL.value)
+                            : AssetImage('assets/images/avatar.png')
+                                as ImageProvider,
+                      )),
                 ],
               ),
               SizedBox(height: 42),
@@ -66,6 +69,12 @@ class HomeView extends GetView<HomeController> {
                           title: 'Teknik Artikulasi',
                           description:
                               'Teknik artikulasi yang baik adalah kunci dalam komunikasi verbal yang efektif. Modul ini mengajarkan cara mengucapkan kata-kata dengan jelas dan tepat.'),
+                      SizedBox(height: 8),
+                      CustomCard(
+                          imagePath: 'assets/images/intonasi.png',
+                          title: 'Teknik Intonasi',
+                          description:
+                              'Intonasi yang baik adalah dasar dari teknik vokal yang presisi. Modul ini mengajarkan cara mengontrol intonasi agar dapat menentukan ketepatan tinggi dan rendahnya setiap nada.'),
                       SizedBox(height: 8),
                       CustomCard(
                           imagePath: 'assets/images/resonansi.png',
