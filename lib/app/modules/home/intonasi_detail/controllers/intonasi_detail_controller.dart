@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class MateriController extends GetxController {
-  //TODO: Implement MateriController
+class IntonasiDetailController extends GetxController {
+  //TODO: Implement IntonasiDetailController
 
   final count = 0.obs;
   @override

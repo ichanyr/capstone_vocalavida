@@ -2,10 +2,8 @@ import 'package:capstone_vocalavida/app/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-
 import '../../home/views/home_view.dart';
 import '../../latihan/views/latihan_view.dart';
-import '../../materi/views/materi_view.dart';
 import '../../profile/views/profile_view.dart';
 import '../controllers/main_controller.dart';
 

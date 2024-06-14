@@ -1,6 +1,5 @@
 import 'package:capstone_vocalavida/app/modules/home/controllers/home_controller.dart';
 import 'package:capstone_vocalavida/app/modules/latihan/controllers/latihan_controller.dart';
-import 'package:capstone_vocalavida/app/modules/materi/controllers/materi_controller.dart';
 import 'package:capstone_vocalavida/app/modules/profile/controllers/profile_controller.dart';
 import 'package:get/get.dart';
 

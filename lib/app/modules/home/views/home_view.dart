@@ -2,6 +2,7 @@ import 'package:capstone_vocalavida/app/style/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../routes/app_pages.dart';
 import '../../../style/colors.dart';
 import '../controllers/home_controller.dart';
 import 'components/custom_card.dart';
@@ -57,30 +58,42 @@ class HomeView extends GetView<HomeController> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      CustomCard(
-                        imagePath: 'assets/images/pernapasan.png',
-                        title: 'Teknik Pernapasan',
-                        description:
-                            'Pernapasan yang baik adalah dasar dari teknik vokal yang solid. Modul ini mengajarkan cara mengontrol pernapasan agar dapat menyanyikan nada dengan stabil dan kuat.',
+                      GestureDetector(
+                        onTap: () => Get.toNamed(Routes.PERNAPASAN_DETAIL),
+                        child: CustomCard(
+                          imagePath: 'assets/images/pernapasan.png',
+                          title: 'Teknik Pernapasan',
+                          description:
+                              'Pernapasan yang baik adalah dasar dari teknik vokal yang solid. Modul ini mengajarkan cara mengontrol pernapasan agar dapat menyanyikan nada dengan stabil dan kuat.',
+                        ),
                       ),
                       SizedBox(height: 8),
-                      CustomCard(
-                          imagePath: 'assets/images/artikulasi.png',
-                          title: 'Teknik Artikulasi',
-                          description:
-                              'Teknik artikulasi yang baik adalah kunci dalam komunikasi verbal yang efektif. Modul ini mengajarkan cara mengucapkan kata-kata dengan jelas dan tepat.'),
+                      GestureDetector(
+                        onTap: () => Get.toNamed(Routes.ARTIKULASI_DETAIL),
+                        child: CustomCard(
+                            imagePath: 'assets/images/artikulasi.png',
+                            title: 'Teknik Artikulasi',
+                            description:
+                                'Teknik artikulasi yang baik adalah kunci dalam komunikasi verbal yang efektif. Modul ini mengajarkan cara mengucapkan kata-kata dengan jelas dan tepat.'),
+                      ),
                       SizedBox(height: 8),
-                      CustomCard(
-                          imagePath: 'assets/images/intonasi.png',
-                          title: 'Teknik Intonasi',
-                          description:
-                              'Intonasi yang baik adalah dasar dari teknik vokal yang presisi. Modul ini mengajarkan cara mengontrol intonasi agar dapat menentukan ketepatan tinggi dan rendahnya setiap nada.'),
+                      GestureDetector(
+                        onTap: () => Get.toNamed(Routes.INTONASI_DETAIL),
+                        child: CustomCard(
+                            imagePath: 'assets/images/intonasi.png',
+                            title: 'Teknik Intonasi',
+                            description:
+                                'Intonasi yang baik adalah dasar dari teknik vokal yang presisi. Modul ini mengajarkan cara mengontrol intonasi agar dapat menentukan ketepatan tinggi dan rendahnya setiap nada.'),
+                      ),
                       SizedBox(height: 8),
-                      CustomCard(
-                          imagePath: 'assets/images/resonansi.png',
-                          title: 'Teknik Resonansi',
-                          description:
-                              'Resonansi adalah kunci untuk suara yang penuh dan kuat. Modul ini mengajarkan cara menggunakan resonansi untuk memaksimalkan kualitas suara.'),
+                      GestureDetector(
+                        onTap: () => Get.toNamed(Routes.RESONANSI_DETAIL),
+                        child: CustomCard(
+                            imagePath: 'assets/images/resonansi.png',
+                            title: 'Teknik Resonansi',
+                            description:
+                                'Resonansi adalah kunci untuk suara yang penuh dan kuat. Modul ini mengajarkan cara menggunakan resonansi untuk memaksimalkan kualitas suara.'),
+                      ),
                     ],
                   ),
                 ),

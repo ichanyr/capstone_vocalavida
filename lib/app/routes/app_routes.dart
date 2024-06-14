@@ -15,6 +15,10 @@ abstract class Routes {
   static const ON_BORADING = _Paths.ON_BORADING;
   static const ON_BOARDING = _Paths.ON_BOARDING;
   static const LATIHAN_DETAIL = _Paths.LATIHAN_DETAIL;
+  static const PERNAPASAN_DETAIL = _Paths.PERNAPASAN_DETAIL;
+  static const RESONANSI_DETAIL = _Paths.RESONANSI_DETAIL;
+  static const ARTIKULASI_DETAIL = _Paths.ARTIKULASI_DETAIL;
+  static const INTONASI_DETAIL = _Paths.INTONASI_DETAIL;
 }
 
 abstract class _Paths {
@@ -29,4 +33,8 @@ abstract class _Paths {
   static const ON_BORADING = '/on-borading';
   static const ON_BOARDING = '/on-boarding';
   static const LATIHAN_DETAIL = '/latihan-detail';
+  static const PERNAPASAN_DETAIL = '/pernapasan-detail';
+  static const RESONANSI_DETAIL = '/resonansi-detail';
+  static const ARTIKULASI_DETAIL = '/artikulasi-detail';
+  static const INTONASI_DETAIL = '/intonasi-detail';
 }
