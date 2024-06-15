@@ -2,8 +2,8 @@ import 'package:capstone_vocalavida/app/modules/home/views/components/materi.dar
 import 'package:capstone_vocalavida/app/routes/app_pages.dart';
 import 'package:capstone_vocalavida/app/style/colors.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../style/text_style.dart';
 import '../controllers/artikulasi_detail_controller.dart';
@@ -13,13 +13,16 @@ class ArtikulasiDetailView extends GetView<ArtikulasiDetailController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: offWhite,
-      body: MateriDetail(
-        title: 'Teknik Artikulasi',
-        description:
-            'Teknik artikulasi pada dasar dapat diartikan sebagai jenis teknik vokal dalam melakukan perubahan saluran di ruang rongga udara. Hal itu dimaksudkan agar seorang penyanyi bisa menghasilkan bunyi atau suara yang lebih jelas.',
-        imagePath: 'assets/images/artikulasiDetail.png',
-        content:
-            '''Berikut ini adalah beberapa faktor yang perlu diperhatikan agar bisa menguasai teknik artikulasi dengan baik dan benar, sehingga pendengar mampu merasakan pesan dari sebuah lagu yang dinyanyikan, faktor tersebut diantaranya sikap badan, posisi mulut, latihan vokalisis, pembentukan bunyi vokal dan konsonan.
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            MateriDetail(
+              title: 'Teknik Artikulasi',
+              description:
+                  'Teknik artikulasi pada dasar dapat diartikan sebagai jenis teknik vokal dalam melakukan perubahan saluran di ruang rongga udara. Hal itu dimaksudkan agar seorang penyanyi bisa menghasilkan bunyi atau suara yang lebih jelas.',
+              imagePath: 'assets/images/artikulasiDetail.png',
+              content: '''
+Berikut ini adalah beberapa faktor yang perlu diperhatikan agar bisa menguasai teknik artikulasi dengan baik dan benar, sehingga pendengar mampu merasakan pesan dari sebuah lagu yang dinyanyikan, faktor tersebut diantaranya sikap badan, posisi mulut, latihan vokalisis, pembentukan bunyi vokal dan konsonan.
 
 1. Kepala tegak dan pandangan ke depan.
 2. Tulang punggung lurus.
@@ -38,7 +41,36 @@ Latihan vokalisis membantu memelihara dan menyempurnakan huruf vokal dan konsona
 
 Ini penting untuk menciptakan suara yang bulat, merdu, dan indah.
 ''',
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: _buildYouTubeLink(),
+            ),
+          ],
+        ),
       ),
     );
+  }
+
+  Widget _buildYouTubeLink() {
+    return InkWell(
+      onTap: () =>
+          _launchURL('https://youtu.be/zb_lVBSiTs4?si=nYKJ20tmkB5-Ui30'),
+      child: Text(
+        'Lihat video tutorial di YouTube',
+        style: TextStyle(
+          color: Colors.blue,
+          decoration: TextDecoration.underline,
+        ),
+      ),
+    );
+  }
+
+  void _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
