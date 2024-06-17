@@ -19,6 +19,7 @@ abstract class Routes {
   static const RESONANSI_DETAIL = _Paths.RESONANSI_DETAIL;
   static const ARTIKULASI_DETAIL = _Paths.ARTIKULASI_DETAIL;
   static const INTONASI_DETAIL = _Paths.INTONASI_DETAIL;
+  static const UJIAN_DETAIL = _Paths.UJIAN_DETAIL;
 }
 
 abstract class _Paths {
@@ -37,4 +38,5 @@ abstract class _Paths {
   static const RESONANSI_DETAIL = '/resonansi-detail';
   static const ARTIKULASI_DETAIL = '/artikulasi-detail';
   static const INTONASI_DETAIL = '/intonasi-detail';
+  static const UJIAN_DETAIL = '/ujian-detail';
 }

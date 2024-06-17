@@ -3,9 +3,13 @@ import 'package:get/get.dart';
 import 'package:capstone_vocalavida/app/modules/home/artikulasi_detail/bindings/artikulasi_detail_binding.dart';
 import 'package:capstone_vocalavida/app/modules/home/artikulasi_detail/views/artikulasi_detail_view.dart';
 import 'package:capstone_vocalavida/app/modules/home/bindings/home_binding.dart';
-import 'package:capstone_vocalavida/app/modules/home/views/home_view.dart';
 import 'package:capstone_vocalavida/app/modules/home/intonasi_detail/bindings/intonasi_detail_binding.dart';
 import 'package:capstone_vocalavida/app/modules/home/intonasi_detail/views/intonasi_detail_view.dart';
+import 'package:capstone_vocalavida/app/modules/home/pernapasan_detail/bindings/pernapasan_detail_binding.dart';
+import 'package:capstone_vocalavida/app/modules/home/pernapasan_detail/views/pernapasan_detail_view.dart';
+import 'package:capstone_vocalavida/app/modules/home/resonansi_detail/bindings/resonansi_detail_binding.dart';
+import 'package:capstone_vocalavida/app/modules/home/resonansi_detail/views/resonansi_detail_view.dart';
+import 'package:capstone_vocalavida/app/modules/home/views/home_view.dart';
 import 'package:capstone_vocalavida/app/modules/latihan/bindings/latihan_binding.dart';
 import 'package:capstone_vocalavida/app/modules/latihan/views/latihan_view.dart';
 import 'package:capstone_vocalavida/app/modules/latihan_detail/bindings/latihan_detail_binding.dart';
@@ -14,14 +18,12 @@ import 'package:capstone_vocalavida/app/modules/login/controllers/login_controll
 import 'package:capstone_vocalavida/app/modules/login/views/login_view.dart';
 import 'package:capstone_vocalavida/app/modules/main/views/main_view.dart';
 import 'package:capstone_vocalavida/app/modules/onBoarding/bindings/on_boarding_binding.dart';
-import 'package:capstone_vocalavida/app/modules/home/pernapasan_detail/bindings/pernapasan_detail_binding.dart';
-import 'package:capstone_vocalavida/app/modules/home/pernapasan_detail/views/pernapasan_detail_view.dart';
 import 'package:capstone_vocalavida/app/modules/profile/bindings/profile_binding.dart';
 import 'package:capstone_vocalavida/app/modules/profile/views/profile_view.dart';
 import 'package:capstone_vocalavida/app/modules/register/bindings/register_binding.dart';
 import 'package:capstone_vocalavida/app/modules/register/views/register_view.dart';
-import 'package:capstone_vocalavida/app/modules/home/resonansi_detail/bindings/resonansi_detail_binding.dart';
-import 'package:capstone_vocalavida/app/modules/home/resonansi_detail/views/resonansi_detail_view.dart';
+import 'package:capstone_vocalavida/app/modules/ujian_detail/bindings/ujian_detail_binding.dart';
+import 'package:capstone_vocalavida/app/modules/ujian_detail/views/ujian_detail_view.dart';
 
 import '../modules/main/controllers/main_controller.dart';
 import '../modules/onBoarding/views/on_boarding_view.dart';
@@ -104,6 +106,11 @@ class AppPages {
       name: _Paths.INTONASI_DETAIL,
       page: () => IntonasiDetailView(),
       binding: IntonasiDetailBinding(),
+    ),
+    GetPage(
+      name: _Paths.UJIAN_DETAIL,
+      page: () => UjianDetailView(),
+      binding: UjianDetailBinding(),
     ),
   ];
 }

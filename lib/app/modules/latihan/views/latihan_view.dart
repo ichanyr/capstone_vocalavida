@@ -1,4 +1,5 @@
 import 'package:capstone_vocalavida/app/modules/latihan_detail/views/latihan_detail_view.dart';
+import 'package:capstone_vocalavida/app/modules/ujian_detail/views/ujian_detail_view.dart';
 import 'package:capstone_vocalavida/app/style/colors.dart';
 import 'package:capstone_vocalavida/app/style/text_style.dart';
 import 'package:flutter/material.dart';
@@ -91,7 +92,7 @@ class LatihanView extends GetView<LatihanController> {
                   child: ElevatedButton(
                     onPressed: () {
                       // Ganti dengan navigasi yang sesuai untuk tombol Ujian
-                      Get.to(LatihanDetailView());
+                      Get.to(UjianDetailView());
                     },
                     style: ButtonStyle(
                       backgroundColor:
