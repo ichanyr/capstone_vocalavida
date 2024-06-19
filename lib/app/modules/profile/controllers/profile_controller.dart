@@ -34,8 +34,13 @@ class ProfileController extends GetxController {
   }
 
   // Fungsi untuk logout
-  void logout() {
-    Get.find<LoginController>().logout();
+  Future<void> logout() async {
+    try {
+      Get.find<LoginController>().logout();
+      Get.snackbar('Sukses', 'berhasil Keluar');
+    } catch (e) {
+      Get.snackbar('Error', 'Gagal Keluar: $e');
+    }
   }
 
   // Fungsi untuk memilih gambar dari galeri
