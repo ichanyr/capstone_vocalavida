@@ -1,12 +1,30 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:capstone_vocalavida/app/routes/app_pages.dart';
 import 'package:capstone_vocalavida/app/style/colors.dart';
+import 'package:get_storage/get_storage.dart';
 
 class LatihanDetailController extends GetxController {
   var currentQuestionIndex = 0.obs;
   var selectedAnswerIndex = (-1).obs;
   var score = 0.obs;
+  final RxString email = "".obs;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final storage = GetStorage();
+
+  Future<void> _load() async {
+    User? user = _auth.currentUser;
+    if (user != null) {
+      email.value = user.email ?? 'Email tidak ditemukan';
+    }
+  }
+
+  @override
+  void onInit() {
+    _load();
+    super.onInit();
+  }
 
   List<String> questions = [
     "Apa yang dimaksud dengan pernapasan diafragma dalam bernyanyi? ",
@@ -140,6 +158,8 @@ class LatihanDetailController extends GetxController {
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
+                    final storage = GetStorage();
+                    storage.write(email.value + "_latihan", "true");
                     Get.offAllNamed(Routes.MAIN);
                   },
                   child: Text(

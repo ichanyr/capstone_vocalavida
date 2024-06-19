@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:capstone_vocalavida/app/modules/latihan_detail/views/latihan_detail_view.dart';
 import 'package:capstone_vocalavida/app/modules/ujian_detail/views/ujian_detail_view.dart';
 import 'package:capstone_vocalavida/app/style/colors.dart';
@@ -7,6 +9,7 @@ import 'package:get/get.dart';
 import '../controllers/latihan_controller.dart';
 
 class LatihanView extends GetView<LatihanController> {
+  final controller = Get.put(LatihanController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +39,7 @@ class LatihanView extends GetView<LatihanController> {
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
+                    borderRadius: BorderRadius.circular(8),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.25),
@@ -51,11 +54,13 @@ class LatihanView extends GetView<LatihanController> {
                       Get.to(LatihanDetailView());
                     },
                     style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Color(0xFFEDEDED)),
+                      backgroundColor: MaterialStateProperty.all(
+                          controller.isLatihanDone.value
+                              ? ultramarineBlue
+                              : Color(0xFFEDEDED)),
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(8),
                         ),
                       ),
                     ),
@@ -66,10 +71,19 @@ class LatihanView extends GetView<LatihanController> {
                         children: [
                           Text(
                             "Latihan Soal",
-                            style:
-                                regular.copyWith(fontSize: 20, color: blueWood),
+                            style: regular.copyWith(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                                color: controller.isLatihanDone.value
+                                    ? Colors.white
+                                    : blueWood),
                           ),
-                          Icon(Icons.arrow_forward_ios),
+                          controller.isLatihanDone.value
+                              ? Icon(
+                                  Icons.check,
+                                  color: Colors.white,
+                                )
+                              : Icon(Icons.arrow_forward_ios),
                         ],
                       ),
                     ),
@@ -79,7 +93,7 @@ class LatihanView extends GetView<LatihanController> {
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
+                    borderRadius: BorderRadius.circular(8),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.25),
@@ -95,11 +109,13 @@ class LatihanView extends GetView<LatihanController> {
                       Get.to(UjianDetailView());
                     },
                     style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Color(0xFFEDEDED)),
+                      backgroundColor: MaterialStateProperty.all(
+                          controller.isUjianDone.value
+                              ? ultramarineBlue
+                              : Color(0xFFEDEDED)),
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(8),
                         ),
                       ),
                     ),
@@ -110,10 +126,19 @@ class LatihanView extends GetView<LatihanController> {
                         children: [
                           Text(
                             "Ujian",
-                            style:
-                                regular.copyWith(fontSize: 20, color: blueWood),
+                            style: regular.copyWith(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                                color: controller.isUjianDone.value
+                                    ? Colors.white
+                                    : blueWood),
                           ),
-                          Icon(Icons.arrow_forward_ios),
+                          controller.isUjianDone.value
+                              ? Icon(
+                                  Icons.check,
+                                  color: Colors.white,
+                                )
+                              : Icon(Icons.arrow_forward_ios),
                         ],
                       ),
                     ),

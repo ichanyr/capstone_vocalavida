@@ -5,6 +5,8 @@ import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:capstone_vocalavida/app/style/colors.dart'; // Import the colors.dart
 
 class UjianDetailView extends StatelessWidget {
+  final RxString email = "".obs;
+
   @override
   Widget build(BuildContext context) {
     final UjianDetailController controller = Get.put(UjianDetailController());

@@ -43,7 +43,7 @@ class HomeView extends GetView<HomeController> {
                         radius: 35,
                         backgroundImage: controller.photoURL.value.isNotEmpty
                             ? NetworkImage(controller.photoURL.value)
-                            : AssetImage('assets/images/avatar.png')
+                            : AssetImage('assets/images/ava.png')
                                 as ImageProvider,
                       )),
                 ],
