@@ -37,10 +37,10 @@ class LatihanDetailView extends StatelessWidget {
                     size: 10,
                     selectedColor: ultramarineBlue,
                     unselectedColor: Colors.grey,
-                    roundedEdges: Radius.circular(5),
+                    roundedEdges: const Radius.circular(5),
                   ),
                 ),
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
                 Center(
                   child: Text(
                     controller.questions[controller.currentQuestionIndex.value],

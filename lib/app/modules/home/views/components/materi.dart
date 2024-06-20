@@ -29,7 +29,7 @@ class MateriDetail extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GestureDetector(
-                onTap: () => Get.offAndToNamed(Routes.HOME),
+                onTap: () => Get.offAndToNamed(Routes.MAIN),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(
@@ -42,7 +42,7 @@ class MateriDetail extends StatelessWidget {
                     child: Icon(
                       Icons.arrow_back,
                       color: ultramarineBlue,
-                      size: 45,
+                      size: 35,
                     ),
                   ),
                 ),

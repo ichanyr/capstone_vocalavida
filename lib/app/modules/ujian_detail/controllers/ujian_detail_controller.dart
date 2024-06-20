@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -154,9 +155,10 @@ class UjianDetailController extends GetxController {
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    final storage = GetStorage();
-                    storage.write(email.value + "_ujian", "true");
-
+                    var doc = FirebaseFirestore.instance
+                        .collection("status")
+                        .doc("ujian");
+                    doc.set({email.value: true}, SetOptions(merge: true));
                     Get.offAllNamed(Routes.MAIN);
                   },
                   child: Text(

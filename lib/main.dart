@@ -16,7 +16,7 @@ void main() async {
           appId: "1:732129938065:android:0f07a45f9b2697fcb3cd30",
           messagingSenderId: "732129938065",
           storageBucket: "capstone-dbe0e.appspot.com",
-          projectId: "mcapstone-dbe0e"));
+          projectId: "capstone-dbe0e"));
   runApp(MyApp());
 }
 

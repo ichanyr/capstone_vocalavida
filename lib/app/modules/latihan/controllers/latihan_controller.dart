@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -18,14 +19,32 @@ class LatihanController extends GetxController {
       email.value = user.email ?? 'Email tidak ditemukan';
     }
 
-    String? isLatihanString = storage.read(email.value + "_latihan");
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    var docL = firestore.collection("status").doc("latihan");
+    var docU = firestore.collection("status").doc("ujian");
+    docL.get().then(
+      (value) {
+        var data = value.data();
+        try {
+          isLatihanDone.value = data![email.value];
+        } catch (err) {
+          printError(info: "does not exist");
+        }
+      },
+    );
+    docU.get().then(
+      (value) {
+        var data = value.data();
+        try {
+          isUjianDone.value = data![email.value];
+        } catch (err) {
+          printError(info: "does not exist");
+        }
+      },
+    );
+
     String? isUjianString = storage.read(email.value + "_ujian");
-    if (isLatihanString != null) {
-      isLatihanDone.value = isLatihanString == "true" ? true : false;
-    } else {
-      storage.write(email.value + "_latihan", "false");
-      isLatihanDone.value = false;
-    }
     if (isUjianString != null) {
       isUjianDone.value = isUjianString == "true" ? true : false;
     } else {
