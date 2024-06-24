@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class LatihanController extends GetxController {
-  //TODO: Implement LatihanController
-
   final count = 0.obs;
   final storage = GetStorage();
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -13,14 +11,14 @@ class LatihanController extends GetxController {
   RxBool isUjianDone = false.obs;
   RxBool isLatihanDone = false.obs;
 
+  // Fungsi Mengambil Informasi Dari Firestore
   Future<void> _load() async {
     User? user = _auth.currentUser;
     if (user != null) {
       email.value = user.email ?? 'Email tidak ditemukan';
     }
-
+    // Mendapatkan Dokumen Status Ujian
     FirebaseFirestore firestore = FirebaseFirestore.instance;
-
     var docL = firestore.collection("status").doc("latihan");
     var docU = firestore.collection("status").doc("ujian");
     docL.get().then(
@@ -43,7 +41,7 @@ class LatihanController extends GetxController {
         }
       },
     );
-
+    // Memuat Status Ujian dari Penyimpanan Lokal
     String? isUjianString = storage.read(email.value + "_ujian");
     if (isUjianString != null) {
       isUjianDone.value = isUjianString == "true" ? true : false;

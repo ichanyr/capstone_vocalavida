@@ -2,7 +2,7 @@ import 'package:capstone_vocalavida/app/modules/home/views/components/materi.dar
 import 'package:capstone_vocalavida/app/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/services.dart'; // Import the services package for clipboard access
 
 import '../controllers/intonasi_detail_controller.dart';
 
@@ -40,9 +40,9 @@ Berikut ini adalah beberapa tips yang bisa Kamu gunakan untuk menguasai teknik i
   Widget _buildYouTubeLink() {
     return InkWell(
       onTap: () =>
-          _launchURL('https://youtu.be/uTj3XMkJpSw?si=leXAyMp1jW2NSHI9'),
+          _copyToClipboard('https://youtu.be/uTj3XMkJpSw?si=leXAyMp1jW2NSHI9'),
       child: Text(
-        'Lihat video tutorial di YouTube',
+        'Salin link video tutorial YouTube',
         style: TextStyle(
           color: Colors.blue,
           decoration: TextDecoration.underline,
@@ -51,11 +51,14 @@ Berikut ini adalah beberapa tips yang bisa Kamu gunakan untuk menguasai teknik i
     );
   }
 
-  void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+  void _copyToClipboard(String url) {
+    Clipboard.setData(ClipboardData(text: url));
+    Get.snackbar(
+      'Link Disalin',
+      'Link YouTube telah disalin ke clipboard.',
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.black.withOpacity(0.5),
+      colorText: Colors.white,
+    );
   }
 }

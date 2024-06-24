@@ -2,7 +2,7 @@ import 'package:capstone_vocalavida/app/modules/home/views/components/materi.dar
 import 'package:capstone_vocalavida/app/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/services.dart'; // Import the services package for clipboard access
 
 import '../controllers/pernapasan_detail_controller.dart';
 
@@ -36,7 +36,7 @@ Berikut ini adalah 3 jenis teknik pernapasan yang perlu penyanyi kuasai dalam be
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: _buildYouTubeLink(),
+              child: _buildCopyLinkButton(),
             ),
           ],
         ),
@@ -44,12 +44,12 @@ Berikut ini adalah 3 jenis teknik pernapasan yang perlu penyanyi kuasai dalam be
     );
   }
 
-  Widget _buildYouTubeLink() {
+  Widget _buildCopyLinkButton() {
     return InkWell(
       onTap: () =>
-          _launchURL('https://youtu.be/e-9LPpsBidE?si=Tht_-R1nCrKuMS63'),
+          _copyToClipboard('https://youtu.be/e-9LPpsBidE?si=Tht_-R1nCrKuMS63'),
       child: Text(
-        'Lihat video tutorial di YouTube',
+        'Salin link video tutorial YouTube',
         style: TextStyle(
           color: Colors.blue,
           decoration: TextDecoration.underline,
@@ -58,11 +58,14 @@ Berikut ini adalah 3 jenis teknik pernapasan yang perlu penyanyi kuasai dalam be
     );
   }
 
-  void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+  void _copyToClipboard(String url) {
+    Clipboard.setData(ClipboardData(text: url));
+    Get.snackbar(
+      'Link Disalin',
+      'Link YouTube telah disalin ke clipboard.',
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.black.withOpacity(0.5),
+      colorText: Colors.white,
+    );
   }
 }

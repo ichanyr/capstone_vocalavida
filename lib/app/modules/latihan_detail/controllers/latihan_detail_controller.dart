@@ -159,8 +159,6 @@ class LatihanDetailController extends GetxController {
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () async {
-                    var collection =
-                        FirebaseFirestore.instance.collection("status");
                     var doc = FirebaseFirestore.instance
                         .collection("status")
                         .doc("latihan");

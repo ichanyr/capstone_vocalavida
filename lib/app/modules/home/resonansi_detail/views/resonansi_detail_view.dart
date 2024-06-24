@@ -2,7 +2,7 @@ import 'package:capstone_vocalavida/app/modules/home/views/components/materi.dar
 import 'package:capstone_vocalavida/app/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/services.dart'; // Import the services package for clipboard access
 
 import '../controllers/resonansi_detail_controller.dart';
 
@@ -31,7 +31,7 @@ Ada empat rongga resonansi yang dimiliki pada tubuh manusia, di antaranya yaitu:
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: _buildYouTubeLink(),
+              child: _buildCopyLinkButton(),
             ),
           ],
         ),
@@ -39,12 +39,12 @@ Ada empat rongga resonansi yang dimiliki pada tubuh manusia, di antaranya yaitu:
     );
   }
 
-  Widget _buildYouTubeLink() {
+  Widget _buildCopyLinkButton() {
     return InkWell(
       onTap: () =>
-          _launchURL('https://youtu.be/Gz-plqEyxik?si=qm_o1GSXOf5E6NV_'),
+          _copyToClipboard('https://youtu.be/Gz-plqEyxik?si=qm_o1GSXOf5E6NV_'),
       child: Text(
-        'Lihat video tutorial di YouTube',
+        'Salin link video tutorial YouTube',
         style: TextStyle(
           color: Colors.blue,
           decoration: TextDecoration.underline,
@@ -53,11 +53,14 @@ Ada empat rongga resonansi yang dimiliki pada tubuh manusia, di antaranya yaitu:
     );
   }
 
-  void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+  void _copyToClipboard(String url) {
+    Clipboard.setData(ClipboardData(text: url));
+    Get.snackbar(
+      'Link Disalin',
+      'Link YouTube telah disalin ke clipboard.',
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.black.withOpacity(0.5),
+      colorText: Colors.white,
+    );
   }
 }

@@ -3,7 +3,7 @@ import 'package:capstone_vocalavida/app/routes/app_pages.dart';
 import 'package:capstone_vocalavida/app/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/services.dart'; // Import the services package for clipboard access
 
 import '../../../../style/text_style.dart';
 import '../controllers/artikulasi_detail_controller.dart';
@@ -55,9 +55,9 @@ Ini penting untuk menciptakan suara yang bulat, merdu, dan indah.
   Widget _buildYouTubeLink() {
     return InkWell(
       onTap: () =>
-          _launchURL('https://youtu.be/zb_lVBSiTs4?si=nYKJ20tmkB5-Ui30'),
+          _copyToClipboard('https://youtu.be/zb_lVBSiTs4?si=nYKJ20tmkB5-Ui30'),
       child: Text(
-        'Lihat video tutorial di YouTube',
+        'Salin link video tutorial YouTube',
         style: TextStyle(
           color: Colors.blue,
           decoration: TextDecoration.underline,
@@ -66,11 +66,14 @@ Ini penting untuk menciptakan suara yang bulat, merdu, dan indah.
     );
   }
 
-  void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+  void _copyToClipboard(String url) {
+    Clipboard.setData(ClipboardData(text: url));
+    Get.snackbar(
+      'Link Disalin',
+      'Link YouTube telah disalin ke clipboard.',
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.black.withOpacity(0.5),
+      colorText: Colors.white,
+    );
   }
 }
